@@ -1,4 +1,4 @@
-chef-wkhtmltopdf
+wkhtmltopdf Cookbook
 ================
 
 Description

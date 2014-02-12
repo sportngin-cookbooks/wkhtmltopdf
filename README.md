@@ -19,7 +19,8 @@ Requirements
 
 ### Binary versions
 
-Currently, this only version `0.10.0_rc2` of `wkhtmltopdf` is supported.
+Currently, only versions `0.10.0_rc2` and `0.12.0` of `wkhtmltopdf` is
+supported.
 
 
 ### Platforms

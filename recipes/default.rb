@@ -1,7 +1,7 @@
 # Much of this recipe is copied from https://github.com/bflad/chef-wkhtmltopdf
 
 cache_dir = Chef::Config[:file_cache_path]
-tgz_path = File.join(cache_dir, "#{node['wkhtmltopdf']['binary_extracted_name']}.tgz")
+tgz_path = File.join(cache_dir, "#{node['wkhtmltopdf']['archive_name']}")
 
 packages = value_for_platform_family(
   ['debian'] => %w(libxrender1 libxext6 libfontconfig1),
@@ -26,7 +26,7 @@ end
 execute "Copy wkhtmltopdf to #{node['wkhtmltopdf']['install_dir']}" do
   cwd cache_dir
   command <<-COMMAND
-    cp #{node['wkhtmltopdf']['binary_extracted_name']} #{node['wkhtmltopdf']['install_dir']}/wkhtmltopdf
+    cp wkhtmltopdf #{node['wkhtmltopdf']['install_dir']}/
   COMMAND
   creates "#{node['wkhtmltopdf']['install_dir']}/wkhtmltopdf"
 end

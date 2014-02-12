@@ -7,4 +7,4 @@ end
 default['wkhtmltopdf']['install_dir'] = "/usr/local/bin"
 default['wkhtmltopdf']['version'] = '0.12.0-03c001d'
 
-default['wkhtmltopdf']['binary_extracted_name'] = "wkhtmltopdf-#{node['wkhtmltopdf']['version']}-#{node['wkhtmltopdf']['arch']}"
+default['wkhtmltopdf']['archive_name'] = "wkhtmltopdf-#{node['wkhtmltopdf']['version']}-#{node['wkhtmltopdf']['arch']}.tgz"

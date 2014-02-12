@@ -19,3 +19,9 @@ suites:
     run_list:
       - recipe[wkhtmltopdf::default]
     attributes:
+  - name: release_0_10
+    run_list:
+      - recipe[wkhtmltopdf::default]
+    attributes:
+      wkhtmltopdf:
+        version: '0.10.0_rc2'

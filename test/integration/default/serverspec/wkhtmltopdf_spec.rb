@@ -10,7 +10,7 @@ describe 'wkhtmltopdf' do
 
   describe command('/usr/local/bin/wkhtmltopdf --version') do
     it "should be installed" do
-      subject.should return_stdout /wkhtmltopdf\s0\.10\.0\src2/
+      subject.should return_stdout /wkhtmltopdf\s0\.12\.0/
     end
   end
 

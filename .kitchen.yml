@@ -1,0 +1,27 @@
+---
+driver_plugin: vagrant
+driver_config:
+  use_vagrant_berkshelf_plugin: true
+  use_vagrant_provision: true
+  require_chef_omnibus: latest
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: centos-6.3
+    driver_config:
+      box: berkshelf-centos-6.3
+      box_url: https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box
+
+suites:
+  - name: default
+    run_list:
+      - recipe[wkhtmltopdf::default]
+    attributes:
+  - name: release_0_10
+    run_list:
+      - recipe[wkhtmltopdf::default]
+    attributes:
+      wkhtmltopdf:
+        version: '0.10.0_rc2'

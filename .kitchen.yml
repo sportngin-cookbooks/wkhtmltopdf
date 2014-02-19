@@ -15,11 +15,11 @@ platforms:
       box_url: https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box
 
 suites:
-  - name: default
+  - name: wkhtmltopdf_default
     run_list:
       - recipe[wkhtmltopdf::default]
     attributes:
-  - name: release_0_10
+  - name: wkhtmltopdf_release_0_10
     run_list:
       - recipe[wkhtmltopdf::default]
     attributes:

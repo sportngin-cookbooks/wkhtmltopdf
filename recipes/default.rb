@@ -23,7 +23,10 @@ execute "Extract #{tgz_path}" do
   creates File.join(cache_dir, node['wkhtmltopdf']['binary_extracted_name'])
 end
 
-remote_file "#{node['wkhtmltopdf']['install_dir']}/wkhtmltopdf" do
-  source "file://#{cache_dir}/#{node['wkhtmltopdf']['binary_extracted_name']}"
-  mode 0755
+new_bin_file   = "#{node['wkhtmltopdf']['install_dir']}/wkhtmltopdf"
+extracted_file = "#{node['wkhtmltopdf']['binary_extracted_name']}"
+
+execute "cp #{extracted_file} #{new_bin_file}" do
+  cwd cache_dir
+  creates new_bin_file
 end

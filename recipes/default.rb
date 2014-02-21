@@ -18,6 +18,8 @@ cookbook_file tgz_path do
   mode '0644'
 end
 
+execute "rm #{File.join(cache_dir, node['wkhtmltopdf']['binary_extracted_name'])}" if node['wkhtmltopdf']['force']
+
 execute "Extract #{tgz_path}" do
   cwd cache_dir
   command "tar zxf #{tgz_path}"
@@ -29,6 +31,8 @@ end
 
 new_bin_file   = "#{node['wkhtmltopdf']['install_dir']}/wkhtmltopdf"
 extracted_file = "#{node['wkhtmltopdf']['binary_extracted_name']}"
+
+execute "rm #{new_bin_file}" if node['wkhtmltopdf']['force']
 
 execute "cp #{extracted_file} #{new_bin_file}" do
   cwd cache_dir

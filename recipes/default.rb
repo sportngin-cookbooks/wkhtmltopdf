@@ -9,29 +9,6 @@ rpm_name       = "wkhtmltox-#{wk_version}_linux-#{wk_distro}-#{wk_arch}.rpm"
 cache_dir      = Chef::Config[:file_cache_path]
 rpm_path       = File.join(cache_dir, rpm_name)
 
-# dependencies from centos 6 .rpm file:
-# fontconfig freetype libpng zlib libjpeg
-# openssl libX11 libXext libXrender libstdc++
-
-# satisfied by fontconfig-devel
-# fontconfig
-# freetype (fontconfig-devel -> freetype-devel)
-#
-# satisfied by libXrender
-# libX11
-# libXext
-# libXrender
-#
-# openssl (satisfied by openssl-devel) (why did original use -devel?)
-#
-# I added these two (probably for wk..png that's included)
-# libpng
-# libjpeg
-#
-# probably installed by default (but let's make sure)
-# zlib
-# libstdc++
-
 packages = value_for_platform_family(
   # Debian package names haven't been updaetd for "wk...pdf" -> "wk...x"
   ['debian'] => %w(libxrender1 libxext6 libfontconfig1),

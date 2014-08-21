@@ -10,8 +10,8 @@ cache_dir      = Chef::Config[:file_cache_path]
 rpm_path       = File.join(cache_dir, rpm_name)
 
 packages = value_for_platform_family(
-  # Debian package names haven't been updaetd for "wk...pdf" -> "wk...x"
-  ['debian'] => %w(libxrender1 libxext6 libfontconfig1),
+  # Debian package haven't been tested since change to "toX"
+  # ['debian'] => %w(libxrender1 libxext6 libfontconfig1 libpng libjpeg),
   ['fedora','rhel'] => %w(openssl libXrender libXext fontconfig-devel urw-fonts libpng libjpeg zlib libstdc++)
 )
 

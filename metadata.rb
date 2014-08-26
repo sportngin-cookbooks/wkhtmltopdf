@@ -1,15 +1,15 @@
-name              "wkhtmltopdf"
+name              "wkhtmltox"
 maintainer        "SportNgin"
 license           "MIT"
-description       "Installs a global executable for the `wkhtmltopdf` lib."
-long_description  "Self continated recipe to build and install the linux wkhtmltopdf binary.  No external dependancies required."
+description       "Installs the wkhtmltox package."
+long_description  "Self continated recipe to build and install the linux wkhtmltox package.  No external dependancies required."
 version           "0.1.0"
 
 
-recipe "wkhtmltopdf", "Installs the linux wkhtmltopdf binary"
+recipe "wkhtmltox", "Installs the linux wkhtmltox binary"
 
-supports "debian"
-supports "ubuntu"
+#supports "debian"
+#supports "ubuntu"
 supports "centos"
 supports "redhat"
 supports "fedora"

@@ -9,19 +9,19 @@ provisioner:
   name: chef_solo
 
 platforms:
-  - name: centos-6.3
+  - name: centos-6.5
     driver_config:
-      box: berkshelf-centos-6.3
-      box_url: https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box
+      box: centos-6.5
+      box_url: https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
 
 suites:
-  - name: wkhtmltopdf_default
+  - name: wkhtmltox_default
     run_list:
-      - recipe[wkhtmltopdf::default]
+      - recipe[wkhtmltox::default]
     attributes:
-  - name: wkhtmltopdf_release_0_10
+  - name: wkhtmltox_release_0_12_1
     run_list:
-      - recipe[wkhtmltopdf::default]
+      - recipe[wkhtmltox::default]
     attributes:
       wkhtmltopdf:
-        version: '0.10.0_rc2'
+        version: '0.12.1'

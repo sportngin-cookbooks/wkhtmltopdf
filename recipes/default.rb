@@ -1,35 +1,34 @@
-# I wish this worked... (it only works for symbol keys)
-# rpm_name       = "wkhtmltox-%{version}_linux-%{distro}-%{arch}.rpm" % node['wkhtmltox']
+package_file   = node['wkhtmltox']['package']
 
-wk_version     = node['wkhtmltox']['version']
-wk_arch        = node['wkhtmltox']['arch']
-wk_distro      = node['wkhtmltox']['distro']
-rpm_name       = "wkhtmltox-#{wk_version}_linux-#{wk_distro}-#{wk_arch}.rpm"
+if package_file.empty?
+  wk_version     = node['wkhtmltox']['version']
+  wk_arch        = node['wkhtmltox']['arch']
+  wk_distro      = node['wkhtmltox']['distro']
+  package_file   = "wkhtmltox-#{wk_version}_linux-#{wk_distro}-#{wk_arch}.rpm"
+end
 
-cache_dir      = Chef::Config[:file_cache_path]
-rpm_path       = File.join(cache_dir, rpm_name)
+log "package_file: #{package_file}"
+log "platform_version: #{node['platform_version']}"
 
-packages = value_for_platform_family(
+# Will the package manager handle this?
+#packages = value_for_platform_family(
   # Debian package haven't been tested since change to "toX"
   # ['debian'] => %w(libxrender1 libxext6 libfontconfig1 libpng libjpeg),
-  ['fedora','rhel'] => %w(openssl libXrender libXext fontconfig-devel urw-fonts libpng libjpeg zlib libstdc++)
-)
+#  ['fedora','rhel'] => %w(openssl libXrender libXext fontconfig-devel urw-fonts libpng libjpeg zlib libstdc++)
+#)
 
-packages.each do |pkg|
-  package pkg
+#packages.each do |pkg|
+#  package pkg
+#end
+
+cookbook_file package_file do
+  source package_file
 end
 
-cookbook_file rpm_path do
-  source rpm_path
-  # Is this needed?
-  mode '0644'
-end
-
-yum_package "wkhtmltox" do
+package "wkhtmltox" do
   action :install
-  # Is this needed with cookbook_file?
-  # source rpm_path
+  source package_file
 
   # Will a version check work as a not_if would?
-  #version wk_version
+  #version node['wkhtmltox']['version']
 end

@@ -7,3 +7,5 @@ end
 
 default['wkhtmltox']['version'] = "0.12.1"
 default['wkhtmltox']['distro'] = "centos6"
+
+default['wkhtmltox']['package'] = ""

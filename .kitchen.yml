@@ -13,7 +13,7 @@ platforms:
   - name: centos-6.5
 
 suites:
-  - name: wkhtmltox_default
+  - name: default
     run_list:
       - recipe[wkhtmltox::default]
     attributes:

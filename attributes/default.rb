@@ -20,6 +20,7 @@ end
 
 default['wkhtmltox']['version'] = "0.12.1"
 
-if node['wkhtmltox']['version'] && node['wkhtmltox']['release'] && node['wkhtmltox']['arch']
-  default['wkhtmltox']['package_file'] = "wkhtmltox-#{node['wkhtmltox']['version']}_linux-#{node['wkhtmltox']['release']}-#{node['wkhtmltox']['arch']}.rpm"
+wk = node['wkhtmltox']
+if wk['version'] && wk['release'] && wk['arch']
+  default['wkhtmltox']['package_file'] = "wkhtmltox-#{wk['version']}_linux-#{wk['release']}-#{wk['arch']}.rpm"
 end

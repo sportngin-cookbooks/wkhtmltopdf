@@ -17,9 +17,11 @@ suites:
     run_list:
       - recipe[wkhtmltox::default]
     attributes:
-  - name: wkhtmltox_release_0_12_1
+  - name: version_0_12_2_6a13a51
     run_list:
       - recipe[wkhtmltox::default]
+    excludes:
+      - centos-5.10
     attributes:
       wkhtmltox:
-        version: '0.12.1'
+        version: '0.12.2-6a13a51'

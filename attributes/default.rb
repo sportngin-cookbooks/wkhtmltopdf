@@ -9,6 +9,7 @@ end
 
 case node[:platform]
 when "centos"
+  # I don't know if this will work on Amazon Linux
   if node[:platform_version].start_with?('6.')
     default['wkhtmltox']['release'] = "centos6"
   end

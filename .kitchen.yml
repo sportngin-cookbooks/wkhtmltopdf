@@ -9,6 +9,7 @@ provisioner:
   name: chef_solo
 
 platforms:
+  - name: centos-5.10
   - name: centos-6.5
     driver_config:
       box: centos-6.5

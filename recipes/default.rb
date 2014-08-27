@@ -1,14 +1,7 @@
-package_file   = node['wkhtmltox']['package']
+cache_dir    = Chef::Config[:file_cache_path]
+package_file = node['wkhtmltox']['package_file']
+package_path = File.join(cache_dir, package_file)
 
-if package_file.empty?
-  wk_version     = node['wkhtmltox']['version']
-  wk_arch        = node['wkhtmltox']['arch']
-  wk_distro      = node['wkhtmltox']['distro']
-  package_file   = "wkhtmltox-#{wk_version}_linux-#{wk_distro}-#{wk_arch}.rpm"
-end
-
-log "package_file: #{package_file}"
-log "platform_version: #{node['platform_version']}"
 
 # Will the package manager handle this?
 #packages = value_for_platform_family(
@@ -21,13 +14,13 @@ log "platform_version: #{node['platform_version']}"
 #  package pkg
 #end
 
-cookbook_file package_file do
+cookbook_file package_path do
   source package_file
 end
 
 package "wkhtmltox" do
   action :install
-  source package_file
+  source package_path
 
   # Will a version check work as a not_if would?
   #version node['wkhtmltox']['version']

@@ -11,9 +11,6 @@ provisioner:
 platforms:
   - name: centos-5.10
   - name: centos-6.5
-    driver_config:
-      box: centos-6.5
-      box_url: https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
 
 suites:
   - name: wkhtmltox_default

@@ -5,17 +5,12 @@ else
 	default['wkhtmltox']['arch'] = 'i386'
 end
 
-# chef-sugar would be nice for this?
-
-case node[:platform]
-when "centos"
-  # I don't know if this will work on Amazon Linux
-  if node[:platform_version].start_with?('6.')
-    default['wkhtmltox']['release'] = "centos6"
-  end
+if platform_family?('rhel')
   if node[:platform_version].start_with?('5.')
     default['wkhtmltox']['release'] = "centos5"
     default['wkhtmltox']['options'] = "--nogpgcheck"
+  else
+    default['wkhtmltox']['release'] = "centos6"
   end
 end
 

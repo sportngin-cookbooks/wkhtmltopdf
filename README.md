@@ -1,34 +1,30 @@
-wkhtmltopdf Cookbook
+wkhtmltox Cookbook
 ================
 
 Description
 -----------
 
-Installs a global executable for the `wkhtmltopdf` lib.  Includes the binary
-with recipe, so no external dependencies are required.
+Installs the wkhtmltox package for RHEL/CentOS based distros.
 
+Includes the package file(s), no external dependencies are required.
 
 Usage
 -----
 
-Include the `wkhtmltopdf` recipe in your run list and you are good to go.
+Include the `wkhtmltox` recipe in your run list and you are good to go.
 
 
 Requirements
 ------------
 
-### Binary versions
+### Package versions
 
-Currently, only versions `0.10.0_rc2` and `0.12.0` of `wkhtmltopdf` is
-supported.
+Currently, only version `0.12.1` of `wkhtmltox` is supported.
 
 
 ### Platforms
 
-The following platforms are supported, but not tested on:
+The following platforms are supported:
 
-* Debian
-* Fedora
-* Red Hat Enterprise Linux
-
-
+* Centos 5 / 6
+* Amazon Linux

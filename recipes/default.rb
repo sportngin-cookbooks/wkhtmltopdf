@@ -1,7 +1,8 @@
-cache_dir    = Chef::Config[:file_cache_path]
 package_file = node['wkhtmltox']['package_file']
 log "package_file: #{package_file}"
-raise "No package_file (This platform + platform_version is not supported.)" unless package_file
+raise "No package_file (This platform/version is not supported)" unless package_file
+
+cache_dir    = Chef::Config[:file_cache_path]
 package_path = File.join(cache_dir, package_file)
 
 cookbook_file package_path do

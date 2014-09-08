@@ -13,7 +13,4 @@ package "wkhtmltox" do
   action :install
   source package_path
   options node['wkhtmltox']['options']
-
-  # Will a version check work as a not_if would?
-  #version node['wkhtmltox']['version']
 end

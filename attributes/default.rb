@@ -1,10 +1,22 @@
+# This should be pulled from the distro
 if node['kernel']['machine'] == 'x86_64'
-	default['wkhtmltopdf']['arch'] = 'amd64'
+	default['wkhtmltox']['arch'] = 'amd64'
 else
-	default['wkhtmltopdf']['arch'] = 'i386'
+	default['wkhtmltox']['arch'] = 'i386'
 end
 
-default['wkhtmltopdf']['install_dir'] = "/usr/local/bin"
-default['wkhtmltopdf']['version'] = '0.12.0-03c001d'
+if platform_family?('rhel')
+  if node[:platform_version].start_with?('5.')
+    default['wkhtmltox']['release'] = "centos5"
+    default['wkhtmltox']['options'] = "--nogpgcheck"
+  else
+    default['wkhtmltox']['release'] = "centos6"
+  end
+end
 
-default['wkhtmltopdf']['binary_extracted_name'] = "wkhtmltopdf-#{node['wkhtmltopdf']['version']}-#{node['wkhtmltopdf']['arch']}"
+default['wkhtmltox']['version'] = "0.12.1"
+
+wk = node['wkhtmltox']
+if wk['version'] && wk['release'] && wk['arch']
+  default['wkhtmltox']['package_file'] = "wkhtmltox-#{wk['version']}_linux-#{wk['release']}-#{wk['arch']}.rpm"
+end
